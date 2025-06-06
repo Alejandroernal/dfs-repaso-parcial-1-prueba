@@ -18,20 +18,73 @@ Se debe cargar el repositorio de GitHub en la tarea del campus.*/}
 
 function App() {
   const [unidad, setUnidad] = useState('Celsius');
-  const [clima, setClima] = useState('Soleado')
+  //const [clima, setClima] = useState('Soleado') 
 
+  const climaSoleado = {
+    name: 'Soleado',
+    icon: '☀️',
+    descripcion: 'asdad'
+  };
+
+  const climaNublado = {
+    name: 'Nublado',
+    icon: '🌧️',
+    descripcion: 'sdadd'
+  };
+
+  const [clima, setClima] = useState(climaSoleado);
+
+
+  /*
+  const [clima, setClima] = useState({
+    name: 'Soleado',
+    icon: '☀️'
+  });
+
+*/
   const cambiarUnidad = () => {
-    setUnidad('Fahrenheit')
+    //Forma 1 ->
+
+    const u = unidad === 'Celsius' ? 'Fahrenheit' : 'Celsius';
+    setUnidad(u);
+
+    //forma 2 -> unidad === 'Celsius' ? setUnidad('Fahrenheit') : setUnidad('Celsius')
+
+    /* Forma 3 ->
+    switch (unidad) {
+      case 'Celsius':
+       return setUnidad('Fahrenheit');
+      default:
+       return setUnidad('Celsius');
+    } 
+    */
+
+    /*{/* Forma 4 ->
+       if (unidad==='Celsius')
+         setUnidad('Fahrenheit')
+       
+       else 
+         setUnidad('Celsius')
+       
+     }*/
+
   }
+
 
   const cambiarClima = (estado) => {
-    setClima(estado)
+    if (estado === 'soleado') {
+      setClima(climaSoleado);
+    }
+    else {
+      setClima(climaNublado);
+    }
   }
 
-    const reset = () => {
-    setClima('Soleado'),
+  const reset = () => {
+    setClima(climaSoleado);
+
     setUnidad('Celsius')
-    }
+  }
 
   return (
     <div className="container">
